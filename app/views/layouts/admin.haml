@@ -2,7 +2,7 @@
 %html
   %head
 
-    %title AdminPortal
+    %title AccountingPortal
     %meta{ name:"viewport", content:"width=device-width, initial-scale=1, maximum-scale=1" }
 
     = stylesheet_link_tag    :application, media: 'all'
@@ -12,7 +12,7 @@
     = javascript_include_tag "adminlte.min"
     = csrf_meta_tags
     = yield :head
-  %body{:class => "skin-black sidebar-mini fixed #{params[:controller].parameterize} #{action_name}"}
+  %body{:class => "skin-yellow-light sidebar-mini fixed #{params[:controller].parameterize} #{action_name}"}
     .wrapper
       = render partial: 'layouts/header'
       - if @sidebar.present?
