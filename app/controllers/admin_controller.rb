@@ -5,4 +5,12 @@ class AdminController < ApplicationController
   before_filter :authenticate_admin
 
   layout 'admin'
+
+  def authenticate_admin
+    authenticate_user!
+    unless current_user.admin?
+      flash[:danger] = "Access Denied"
+      redirect_to root_path
+    end
+  end
 end
