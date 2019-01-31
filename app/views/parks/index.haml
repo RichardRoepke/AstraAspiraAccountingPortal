@@ -1,0 +1,13 @@
+.box
+  .box-body
+    %table#admin-table.searchable.table.table-bordered
+      %thead
+        %tr
+          %th Name
+          %th.text-center Edit
+          %th.text-center Styles
+      %tbody
+        - @park_list.each do |park|
+          %tr
+            %td= park.name
+            %td.text-center= link_to "edit", edit_admin_park_path(park)

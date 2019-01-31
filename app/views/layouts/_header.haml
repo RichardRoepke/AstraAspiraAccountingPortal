@@ -1,0 +1,20 @@
+%header.main-header.hidden-print
+  / Logo
+  %a.logo{:href => admin_root_path}
+    / mini logo for sidebar mini 50x50 pixels
+    %span.logo-mini
+      AAAP
+    / logo for regular state and mobile devices
+    %span.logo-lg
+      AstraAspiraAccounting
+      %B> Portal
+  / Header Navbar
+  %nav.navbar.navbar-static-top{:role => "navigation"}
+    / Sidebar toggle button
+    %a.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
+      %span.sr-only Toggle navigation
+    / Navbar Right Menu
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        %li.hidden-xs= link_to 'Dashboard', admin_root_path
+        %li= link_to 'Logout', destroy_user_session_path, method: :delete
