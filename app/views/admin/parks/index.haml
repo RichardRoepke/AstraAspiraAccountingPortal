@@ -4,10 +4,14 @@
       %thead
         %tr
           %th Name
+          %th Report?
           %th.text-center Edit
-          %th.text-center Styles
       %tbody
         - @park_list.each do |park|
           %tr
             %td= park.name
-            %td.text-center= link_to "edit", edit_admin_park_path(park)
+            - if park.report?
+              %td True
+            - else
+              %td False
+            %td.text-center= link_to "edit", edit_park_path(park)

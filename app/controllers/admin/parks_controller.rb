@@ -1,4 +1,4 @@
-class ParksController < ApplicationController
+class Admin::ParksController < AdminController
   def index
     @content_header = 'All Parks'
     @sidebar = 'parks:index'
