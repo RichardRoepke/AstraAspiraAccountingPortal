@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190131171627) do
+ActiveRecord::Schema.define(version: 20190131192931) do
+
+  create_table "parks", force: true do |t|
+    t.string   "username",                   null: false
+    t.boolean  "report",     default: false, null: false
+    t.string   "name",                       null: false
+    t.string   "address",                    null: false
+    t.string   "city",                       null: false
+    t.string   "zipcode",                    null: false
+    t.integer  "state_id",                   null: false
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
