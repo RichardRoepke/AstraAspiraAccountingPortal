@@ -2,14 +2,38 @@
   %section.sidebar
     %ul.sidebar-menu{ data: {widget: 'tree' } }
       %li.header Main Navigation
-      %li.treeview{class: ("active" if @sidebar.starts_with?("parks"))}
-        = link_to "#" do
-          = icon 'bed'
-          %span Parks
-          %span.pull-right-container
-            %i.fa.fa-angle-left.pull-right
-        %ul.treeview-menu
-          %li{class: ("active" if @sidebar.eql?("parks:index"))}
-            = link_to parks_path do
-              = icon "list"
-              %span List
+      - if current_user.present?
+        %li.treeview{class: ("active" if @sidebar.starts_with?("parks"))}
+          = link_to "#" do
+            = icon 'bed'
+            %span Parks
+            %span.pull-right-container
+              %i.fa.fa-angle-left.pull-right
+          %ul.treeview-menu
+            %li{class: ("active" if @sidebar.eql?("parks:index"))}
+              = link_to parks_path do
+                = icon "list"
+                %span List
+        - if current_user.admin?
+          %li.treeview{class: ("active" if @sidebar.starts_with?("users"))}
+            = link_to "#" do
+              %i.fa.fa-users
+              %span Users
+              %span.pull-right-container
+                %i.fa.fa-angle-left.pull-right
+            %ul.treeview-menu
+              %li{class: ("active" if @sidebar.eql?("users:index"))}
+                = link_to admin_users_path do
+                  = icon "list"
+                  %span List
+              - if @user.present?
+                %li.active
+                  = link_to edit_admin_user_path(@user) do
+                    = icon 'certificate'
+                    %span= @user.username
+                %li.treeview.active
+                  %ul.treeview-menu.active
+                    %li{class: ("active" if @sidebar.eql?("users:info"))}
+                      = link_to admin_user_path(@user) do
+                        = icon (@sidebar.eql?('users:info') ? 'circle' : 'circle-o')
+                        %span Info
