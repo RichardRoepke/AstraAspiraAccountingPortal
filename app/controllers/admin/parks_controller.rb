@@ -16,4 +16,11 @@ class Admin::ParksController < AdminController
     @park = Park.find(params[:id])
     @content_header = 'Edit ' + @park.name
   end
+
+  def update
+    result = { status: 'failure',
+               message: 'An exception has occurred. Please try again.' }
+
+    render json: result
+  end
 end

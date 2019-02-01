@@ -3,7 +3,7 @@
     .box-header.with-border
       %h4 Edit Park
     .box-body
-      = bootstrap_form_for(@park) do |f|
+      = bootstrap_form_for(@park, url: admin_park_path(@park), method: :patch, html: { data: { remote: 'true' } }) do |f|
         = f.text_field :name
         = f.text_field :address
         = f.text_field :city

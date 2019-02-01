@@ -18,5 +18,12 @@
 //= require sweetalert2.min
 //= require_tree .
 
-$(document).ready(function() {
+$(document).ajaxSuccess(function(data, xhr, settings) {
+  if (data.status == 'success') {
+    toastr.success(data.message);
+  } else if (data.status == 'failure') {
+    toastr.error(data.message);
+  } else {
+    toastr.info(data.message);
+  }
 });
