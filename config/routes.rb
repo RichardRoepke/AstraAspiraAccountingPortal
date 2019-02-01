@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  root to: 'parks#index'
+  root to: 'reports#index'
 
-  resources :parks, only: [:index, :edit, :update]
+  resources :reports, only: [:index, :show]
 
   namespace :admin do
     root to: "users#index"
 
+    resources :parks, only: [:index, :edit, :update, :show]
     resources :users, only: [:index, :edit, :update, :show]
   end
 end

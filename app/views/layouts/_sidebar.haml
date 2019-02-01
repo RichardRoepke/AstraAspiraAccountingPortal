@@ -16,16 +16,16 @@
                 %span List
         - if current_user.admin?
           %li.treeview{class: ("active" if @sidebar.starts_with?("parks"))}
-          = link_to "#" do
-            = icon 'bed'
-            %span Parks
-            %span.pull-right-container
-              %i.fa.fa-angle-left.pull-right
-          %ul.treeview-menu
-            %li{class: ("active" if @sidebar.eql?("parks:index"))}
-              = link_to parks_path do
-                = icon "list"
-                %span List
+            = link_to "#" do
+              = icon 'bed'
+              %span Parks
+              %span.pull-right-container
+                %i.fa.fa-angle-left.pull-right
+            %ul.treeview-menu
+              %li{class: ("active" if @sidebar.eql?("parks:index"))}
+                = link_to admin_parks_path do
+                  = icon "list"
+                  %span List
           %li.treeview{class: ("active" if @sidebar.starts_with?("users"))}
             = link_to "#" do
               %i.fa.fa-users
