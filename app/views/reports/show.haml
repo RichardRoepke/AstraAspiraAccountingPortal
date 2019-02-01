@@ -1,4 +1,8 @@
 .container
+  .box.box-default
+    .box-body
+      = link_to 'Get File: ' + @report.file_name, @report.file_url, class: "btn btn-success btn-flat btn-sm"
+      = link_to 'Generate Excel File', root_path, class: "btn btn-info btn-flat btn-sm"
   .box.box-primary
     .box-header.with-border
       %h4 Report Details
@@ -32,9 +36,6 @@
           %tr
             %th Distribute Amount
             %td= @report.distribute_amount
-          %tr
-            %th Excel
-            %td= link_to @report.file_name, @report.file_url
 
   .box.box-warning
     .box-header.with-border
