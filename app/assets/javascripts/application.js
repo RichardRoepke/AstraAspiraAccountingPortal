@@ -18,7 +18,13 @@
 //= require sweetalert2.min
 //= require_tree .
 
-$(document).ajaxSuccess(function(data, xhr, settings) {
+toastr.options = {
+  positionClass: 'toast-bottom-left'
+};
+
+$(document).ajaxSuccess(function(event, xhr, settings) {
+  var data = xhr.responseJSON;
+
   if (data.status == 'success') {
     toastr.success(data.message);
   } else if (data.status == 'failure') {
