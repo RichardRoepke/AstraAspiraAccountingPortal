@@ -8,6 +8,6 @@ class Admin::ParksController < AdminController
   def show
     @sidebar = 'show'
     @park = Park.find(params[:id])
-    @content_header = @park.name + ' Info'
+    @content_header = @park.name + ' Information'
   end
 end
