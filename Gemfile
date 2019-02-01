@@ -37,6 +37,9 @@ gem 'devise'
 # easy form generation
 gem 'simple_form'
 
+# Keeps records in the database when an entry is deleted.
+gem 'acts_as_paranoid'
+
 group :test do
   gem "minitest-rails"
 end
@@ -44,7 +47,6 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'factory_girl_rails'
   gem 'faker'
 end
 

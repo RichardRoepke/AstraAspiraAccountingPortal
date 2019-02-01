@@ -4,8 +4,6 @@ class AdminController < ApplicationController
 
   before_filter :authenticate_admin
 
-  layout 'admin'
-
   def authenticate_admin
     authenticate_user!
     unless current_user.admin?

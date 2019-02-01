@@ -1,0 +1,10 @@
+.box
+  .box-body
+    %table#admin-table.searchable.table.table-bordered
+      %thead
+        %tr
+          %th Name
+      %tbody
+        - @report_list.each do |report|
+          %tr
+            %td= report.park.name
