@@ -5,7 +5,7 @@
         %tr
           %th Name
           %th Report?
-          %th.text-center Edit
+          %th.text-center Info
       %tbody
         - @park_list.each do |park|
           %tr
@@ -14,4 +14,4 @@
               %td True
             - else
               %td False
-            %td.text-center= link_to "edit", edit_park_path(park)
+            %td.text-center= link_to "info", admin_park_path(park)

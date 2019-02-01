@@ -5,9 +5,9 @@ class Admin::ParksController < AdminController
     @park_list = Park.order(:name)
   end
 
-   def edit
-    @sidebar = 'parks:edit'
+  def show
+    @sidebar = 'show'
     @park = Park.find(params[:id])
-    @content_header = 'Edit ' + @park.name
+    @content_header = @park.name + ' Info'
   end
 end

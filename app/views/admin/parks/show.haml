@@ -1,0 +1,22 @@
+.container
+  .box.box-warning
+    .box-header.with-border
+      %h4 Park Info
+    .box-body
+      %table#admin-table{ width: '100%' }
+        %tbody
+          %tr
+            %th Name
+            %td= @park.name
+          %tr
+            %th Username
+            %td= @park.username
+          %tr
+            %th Address
+            %td= @park.full_address
+          %tr
+            %th Phone
+            %td= @park.phone
+          %tr
+            %th Email
+            %td= @park.email
