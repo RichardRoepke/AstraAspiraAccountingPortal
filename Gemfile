@@ -42,6 +42,9 @@ gem 'acts_as_paranoid'
 
 gem 'nokogiri', '~> 1.6.0'
 
+# For quickly setting up Bootstrap forms.
+gem 'bootstrap_form'
+
 group :test do
   gem "minitest-rails"
 end
