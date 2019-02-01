@@ -1,0 +1,63 @@
+.container
+  .col-md-6
+    .box.box-primary
+      .box-header.with-border
+        %h4 Report Details
+      .box-body
+        %table#admin-table{ width: '100%' }
+          %tbody
+            %tr
+              %th Report
+              %td= @report.full_name
+            %tr
+              %th Accommodations
+              %td= @report.accommodations_new_cancelled
+            %tr
+              %th Total Revenue
+              %td= @report.total_rev
+            %tr
+              %th Total Cash
+              %td= @report.total_cash
+            %tr
+              %th Deposits
+              %td= @report.deposits
+            %tr
+              %th Total Credit Card Payments
+              %td= @report.total_credit_card_payments
+            %tr
+              %th Transaction Fees
+              %td= @report.transaction_fees
+            %tr
+              %th Credit Card Fees
+              %td= @report.credit_card_fees
+            %tr
+              %th Total Fees
+              %td= @report.total_fees
+            %tr
+              %th Distribute Amount
+              %td= @report.distribute_amount
+            %tr
+              %th Excel
+              %td.text-center= link_to report.file_name, report.file_url
+
+    .box.box-primary
+      .box-header.with-border
+        %h4 Park Info
+      .box-body
+        %table#admin-table{ width: '100%' }
+          %tbody
+            %tr
+              %th Name
+              %td= @park.name
+            %tr
+              %th Username
+              %td= @park.username
+            %tr
+              %th Address
+              %td= @park.full_address
+            %tr
+              %th Phone
+              %td= @park.phone
+            %tr
+              %th Email
+              %td= @park.email

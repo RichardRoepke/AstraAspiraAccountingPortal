@@ -1,4 +1,4 @@
-class ReportsControlers < ApplicationController
+class ReportsController < ApplicationController
   def index
     @sidebar = 'reports:index'
     @content_header = 'All Reports'
@@ -9,6 +9,6 @@ class ReportsControlers < ApplicationController
     @sidebar = 'reports:info'
     @report = Report.find(params[:id])
     @park = Park.find(@report.park_id)
-    @content_header = @park.name  + ' Report (' + @report.start_date.to_s + '-' + @report.end_date.to_s + ')'
+    @content_header = @report.full_name
   end
 end
