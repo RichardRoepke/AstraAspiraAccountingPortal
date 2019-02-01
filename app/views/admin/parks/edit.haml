@@ -3,7 +3,7 @@
     .box-header.with-border
       %h4 Edit Park
     .box-body
-      = bootstrap_form_with(model: @park, local: true) do |f|
+      = bootstrap_form_for(@park) do |f|
         = f.text_field :name
         = f.text_field :address
         = f.text_field :city
