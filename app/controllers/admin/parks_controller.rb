@@ -19,13 +19,18 @@ class Admin::ParksController < AdminController
   end
 
   def create
-    park = Park.new(park_params)
+    park = Park.create(park_params)
 
-    if park.save!
-      flash[:success] = park.name + ' was successfully created.'
-      redirect_to admin_parks_path
+    if park.valid?
+      if park.save!
+        flash[:success] = park.name + ' was successfully created.'
+        redirect_to admin_parks_path
+      else
+        flash[:error] = 'The park could not be saved. Please try again in a few moments.'
+        redirect_to :back
+      end
     else
-      flash[:error] = 'The park could not be created.'
+      flash[:error] = park.errors.full_messages
       redirect_to :back
     end
   end

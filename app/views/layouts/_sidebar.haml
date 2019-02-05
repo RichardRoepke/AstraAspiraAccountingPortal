@@ -32,9 +32,9 @@
                   = icon "list"
                   %span List
               %li{class: ("active" if @sidebar.eql?("parks:new"))}
-                  = link_to new_admin_park_path do
-                    %i.fa.fa-plus-circle
-                    %span New
+                = link_to new_admin_park_path do
+                  %i.fa.fa-plus-circle
+                  %span New
               - if @park.present?
                 %li{class: ("active" if @sidebar.eql?("parks:info"))}
                   = link_to admin_park_path(@park) do

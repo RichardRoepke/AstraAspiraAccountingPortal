@@ -4,6 +4,7 @@
       %h4 Edit Park
     .box-body
       = bootstrap_form_for(@new_park, url: admin_parks_path, method: :post) do |f|
+        = f.text_field :username
         = f.text_field :name
         = f.text_field :address
         = f.text_field :city
