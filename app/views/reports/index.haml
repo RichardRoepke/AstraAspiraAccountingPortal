@@ -14,4 +14,4 @@
               %td= report.full_name
               %td= report.accommodations_new_cancelled
               %td.text-center= link_to "info", report_path(report)
-              %td.text-center= link_to 'Get File: ' + @report.file_name, @report.file_url, class: "btn btn-success btn-flat btn-sm"
+              %td.text-center= link_to 'Get File: ' + report.file_name, report.file_url, class: "btn btn-success btn-flat btn-sm"
