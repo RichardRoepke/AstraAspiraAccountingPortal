@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "users#index"
 
-    resources :parks, only: [:index, :edit, :update, :show]
+    resources :parks, only: [:new, :index, :edit, :update, :show]
     resources :users, only: [:index, :edit, :update, :show]
   end
 end
