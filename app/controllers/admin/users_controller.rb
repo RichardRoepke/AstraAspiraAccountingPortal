@@ -37,7 +37,7 @@ class Admin::UsersController < AdminController
 
   def edit
     @sidebar = 'users:edit'
-    @content_header = 'Edit ' + @user.name
+    @content_header = 'Edit ' + @user.email
   end
 
   def update
