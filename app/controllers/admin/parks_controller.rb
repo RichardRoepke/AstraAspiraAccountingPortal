@@ -21,7 +21,7 @@ class Admin::ParksController < AdminController
     result = { status: 'failure',
                message: 'An exception has occurred. Please try again.' }
 
-    if @park.present? && @park.update(park_edit_params)
+    if @park.present? && @park.update(park_update_params)
       result[:status] = 'Success'
       result[:message] = @park.name + ' has been successfully updated.'
     elsif @park.present?
@@ -37,7 +37,7 @@ class Admin::ParksController < AdminController
     @park = Park.find(params[:id] || params[:park][:id])
   end
 
-  def park_edit_params
-    params.require(:payment).permit(:first_name, :last_name, :address1, :address2, :city, :province, :postal)
+  def park_update_params
+    params.require(:park).permit(:name, :address, :city, :zipcode, :phone, :email, :report)
   end
 end
