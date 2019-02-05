@@ -8,23 +8,30 @@
           %tr
             %th Email
             %td= @user.email
+              - if @user.admin?
+          - if @user.admin?
+            %tr
+              %th Admin
+              %td
+                %span.badge.badge-success
+                  Admin
           %tr
             %th Confirmed
             - if @user.confirmed_at.present?
               %td
                 %i.fa.fa-check
+              %tr
+                %th Confirmed At
+                %td= @user.confirmed_at
+              %tr
+                %th Confirmation Sent At
+                %td= @user.confirmation_sent_at
+              %tr
+                %th Logins
+                %td= @user.sign_in_count
+              %tr
+                %th Last Login
+                %td= @user.current_sign_in_at
             - else
               %td
                 %i.fa.fa-times
-          %tr
-            %th Confirmed At
-            %td= @user.confirmed_at
-          %tr
-            %th Confirmation Sent At
-            %td= @user.confirmation_sent_at
-          %tr
-            %th Logins
-            %td= @user.sign_in_count
-          %tr
-            %th Last Login
-            %td= @user.current_sign_in_at

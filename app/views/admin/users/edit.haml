@@ -3,10 +3,10 @@
     .box-header.with-border
       %h4 Edit User
     .box-body
-      = bootstrap_form_for(@user, url: admin_user_path(@park), method: :patch, html: { data: { remote: 'true' } }) do |f|
+      = bootstrap_form_for(@user, url: admin_user_path(@user), method: :patch, html: { data: { remote: 'true' } }) do |f|
         = f.text_field :email
         = f.password_field :password
         = f.password_field :password_confirmation
-        unless @user.id == current_user.id
+        - unless @user.id == current_user.id
           = f.check_box :admin
         = f.submit 'Submit Changes'

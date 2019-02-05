@@ -11,7 +11,7 @@
             %th Confirmed
             %th Logins
             %th Last Login
-            /%th.text-center Edit
+            %th.text-center Edit
             %th.text-center Info
         %tbody
           - @user_list.each do |user|
@@ -25,5 +25,5 @@
                   %i.fa.fa-times
               %td= user.sign_in_count
               %td= user.current_sign_in_at
-              /%td.text-center= link_to "edit", edit_admin_user_path(user)
+              %td.text-center= link_to "edit", edit_admin_user_path(user)
               %td.text-center= link_to "info", admin_user_path(user)

@@ -45,6 +45,8 @@ class Admin::UsersController < AdminController
                message: 'An exception has occurred. Please try again.' }
 
     if @user.present? && @user.update(user_params)
+      # Otherwise the server would automatically log the user out to sign back in.
+      bypass_sign_in(@user) if @user.id == current_user.id
       result[:status] = 'Success'
       result[:message] = @user.email + ' has been successfully updated.'
     elsif @user.present?
