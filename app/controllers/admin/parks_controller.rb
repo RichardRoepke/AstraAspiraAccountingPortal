@@ -15,7 +15,7 @@ class Admin::ParksController < AdminController
   def new
     @sidebar = 'parks:new'
     @content_header = 'Add New Park'
-    @new_park = Park.new()
+    @new_park = Park.new
   end
 
   def create
@@ -24,7 +24,7 @@ class Admin::ParksController < AdminController
     if park.valid?
       if park.save!
         flash[:success] = park.name + ' was successfully created.'
-        redirect_to admin_parks_path
+        redirect_to admin_park_path(park)
       else
         flash[:error] = 'The park could not be saved. Please try again in a few moments.'
         redirect_to :back

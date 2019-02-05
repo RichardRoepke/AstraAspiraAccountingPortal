@@ -1,7 +1,7 @@
 .container
   .box.box-warning
     .box-header.with-border
-      %h4 Edit Park
+      %h4 New Park
     .box-body
       = bootstrap_form_for(@new_park, url: admin_parks_path, method: :post) do |f|
         = f.text_field :username

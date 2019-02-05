@@ -51,6 +51,10 @@
                 = link_to admin_users_path do
                   = icon "list"
                   %span List
+              %li{class: ("active" if @sidebar.eql?("users:new"))}
+                = link_to new_admin_park_path do
+                  %i.fa.fa-plus-circle
+                  %span New
               - if @user.present?
                 %li{class: ("active" if @sidebar.eql?("users:info"))}
                   = link_to admin_user_path(@user) do

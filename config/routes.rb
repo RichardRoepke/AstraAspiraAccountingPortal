@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     root to: "users#index"
 
     resources :parks, only: [:new, :create, :index, :edit, :update, :show]
-    resources :users, only: [:index, :edit, :update, :show]
+    resources :users, only: [:new, :create, :index, :edit, :update, :show]
   end
 end

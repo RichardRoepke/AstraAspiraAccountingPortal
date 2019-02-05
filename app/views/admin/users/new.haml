@@ -1,0 +1,9 @@
+.container
+  .box.box-warning
+    .box-header.with-border
+      %h4 New User
+    .box-body
+      = bootstrap_form_for(@new_user, url: admin_users_path, method: :post) do |f|
+        = f.text_field :email
+        = f.check_box :admin
+        = f.submit 'Create New User'
