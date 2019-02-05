@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   before_action :setup_default_params
-  before_action :set_devise_layout?
 
   layout :layout_by_resource
 

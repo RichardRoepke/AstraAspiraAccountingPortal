@@ -12,11 +12,11 @@
     = yield :head
 
     %body{ class: "hold-transition login-page" }
-      .login-logo
-        %span.logo-lg
-          Accounting
-          %B> Portal
       .login-box
+        .login-logo
+          %span.logo-lg
+            Accounting
+            %B> Portal
         .login-box-body
           = yield
     = yield :scripts
