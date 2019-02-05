@@ -1,19 +1,23 @@
-.box
-  .box-body
-    %table#admin-table.searchable.table.table-bordered
-      %thead
-        %tr
-          %th Name
-          %th List Reports?
-          %th.text-center Edit
-          %th.text-center Info
-      %tbody
-        - @park_list.each do |park|
+.container
+  .box.box-default
+    .box-body
+      = link_to 'Add New Park', new_admin_park_path, class: "btn btn-success btn-flat btn-sm"
+  .box.box-primary
+    .box-body
+      %table#admin-table.searchable.table.table-bordered
+        %thead
           %tr
-            %td= park.name
-            - if park.report?
-              %td True
-            - else
-              %td False
-            %td.text-center= link_to "edit", edit_admin_park_path(park)
-            %td.text-center= link_to "info", admin_park_path(park)
+            %th Name
+            %th List Reports?
+            %th.text-center Edit
+            %th.text-center Info
+        %tbody
+          - @park_list.each do |park|
+            %tr
+              %td= park.name
+              - if park.report?
+                %td True
+              - else
+                %td False
+              %td.text-center= link_to "edit", edit_admin_park_path(park)
+              %td.text-center= link_to "info", admin_park_path(park)

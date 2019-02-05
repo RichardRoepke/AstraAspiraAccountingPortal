@@ -8,8 +8,14 @@ class Admin::ParksController < AdminController
   end
 
   def show
-    @sidebar = 'parks:show'
+    @sidebar = 'parks:info'
     @content_header = @park.name + ' Information'
+  end
+
+  def new
+    @sidebar = 'parks:new'
+    @content_header = 'Add New Park'
+    @park = Park.new
   end
 
   def edit
@@ -27,7 +33,14 @@ class Admin::ParksController < AdminController
     elsif @park.present?
       result[:message] = @park.name + ' could not be updated.'
     else
-      result[:message] = 'Park could not be found.'
+      park = Park.new(park_update_params)
+
+      if park.save!
+        result[:status] = 'Success'
+        result[:message] = 'Park was successfully created.'
+      else
+        result[:message] = 'Park could not be created.'
+      end
     end
 
     render json: result

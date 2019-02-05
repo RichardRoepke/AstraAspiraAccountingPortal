@@ -1,16 +1,17 @@
-.box
-  .box-body
-    %table#admin-table.searchable.table.table-bordered
-      %thead
-        %tr
-          %th Report
-          %th Accommodations
-          %th.text-center Info
-          %th.text-center Get File
-      %tbody
-        - @report_list.each do |report|
+.container
+  .box.box-primary
+    .box-body
+      %table#admin-table.searchable.table.table-bordered
+        %thead
           %tr
-            %td= report.full_name
-            %td= report.accommodations_new_cancelled
-            %td.text-center= link_to "info", report_path(report)
-            %td.text-center= link_to report.file_name, report.file_url
+            %th Report
+            %th Accommodations
+            %th.text-center Info
+            %th.text-center Get File
+        %tbody
+          - @report_list.each do |report|
+            %tr
+              %td= report.full_name
+              %td= report.accommodations_new_cancelled
+              %td.text-center= link_to "info", report_path(report)
+              %td.text-center= link_to 'Get File: ' + @report.file_name, @report.file_url, class: "btn btn-success btn-flat btn-sm"

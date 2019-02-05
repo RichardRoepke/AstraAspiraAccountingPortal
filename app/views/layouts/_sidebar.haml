@@ -33,7 +33,7 @@
                   %span List
               - if @park.present?
                 %li{class: ("active" if @sidebar.eql?("parks:info"))}
-                  = link_to admin_parks_path(@park) do
+                  = link_to admin_park_path(@park) do
                     %i.fa.fa-info-circle
                     %span Info
           %li.treeview{class: ("active" if @sidebar.starts_with?("users"))}
