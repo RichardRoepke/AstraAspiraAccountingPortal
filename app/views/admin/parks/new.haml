@@ -3,12 +3,13 @@
     .box-header.with-border
       %h4 Edit Park
     .box-body
-      = bootstrap_form_tag(@park, url: admin_parks_path, method: :post) do |f|
+      = bootstrap_form_for(@new_park, url: admin_parks_path, method: :post) do |f|
         = f.text_field :name
         = f.text_field :address
         = f.text_field :city
         = f.text_field :zipcode
         -# TODO: Get list of states/provinces from Central Catalogue and organize it into a selection.
+        = f.number_field :state_id
         = f.phone_field :phone
         = f.email_field :email
         = f.check_box :report

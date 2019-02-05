@@ -15,7 +15,7 @@ class Admin::ParksController < AdminController
   def new
     @sidebar = 'parks:new'
     @content_header = 'Add New Park'
-    @park = Park.new()
+    @new_park = Park.new()
   end
 
   def create
@@ -56,6 +56,6 @@ class Admin::ParksController < AdminController
   end
 
   def park_params
-    params.require(:park).permit(:name, :address, :city, :zipcode, :phone, :email, :report)
+    params.require(:park).permit(:username, :name, :address, :city, :zipcode, :phone, :email, :report, :state_id)
   end
 end
