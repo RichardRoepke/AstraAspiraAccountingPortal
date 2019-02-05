@@ -5,5 +5,7 @@
     .box-body
       = bootstrap_form_for(@new_user, url: admin_users_path, method: :post) do |f|
         = f.text_field :email
+        = f.password_field :password
+        = f.password_field :password_confirmation
         = f.check_box :admin
         = f.submit 'Create New User'

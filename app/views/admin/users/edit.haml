@@ -5,8 +5,8 @@
     .box-body
       = bootstrap_form_for(@user, url: admin_user_path(@park), method: :patch, html: { data: { remote: 'true' } }) do |f|
         = f.text_field :email
-        = f.text_field :password
-        = f.text_field :password_confirmation
+        = f.password_field :password
+        = f.password_field :password_confirmation
         unless @user.id == current_user.id
           = f.check_box :admin
         = f.submit 'Submit Changes'

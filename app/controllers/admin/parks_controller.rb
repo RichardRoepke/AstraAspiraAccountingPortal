@@ -26,7 +26,7 @@ class Admin::ParksController < AdminController
         flash[:success] = park.name + ' was successfully created.'
         redirect_to admin_park_path(park)
       else
-        flash[:error] = 'The park could not be saved. Please try again in a few moments.'
+        flash[:error] = 'The information was valid but the park could not be created.'
         redirect_to :back
       end
     else
