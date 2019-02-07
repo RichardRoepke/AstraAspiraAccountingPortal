@@ -1,4 +1,15 @@
 .container
+  .box.box-default
+    .box-body
+      = bootstrap_form_tag url: '/reports', method: :get do |f|
+        .row
+          .col-sm-6
+            = f.date_select :start_date, value: @start_date
+          .col-sm-6
+            = f.date_select :end_date, value: @end_date
+        .row
+          .col-sm-4
+            = f.submit "Search"
   .box.box-primary
     .box-body
       %table#admin-table.searchable.table.table-bordered
