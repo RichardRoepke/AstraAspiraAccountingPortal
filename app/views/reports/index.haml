@@ -4,13 +4,13 @@
       = bootstrap_form_tag url: '/reports', method: :get do |f|
         .row
           .col-sm-4
-            = f.date_select :start_date, value: @start_date
+            = f.date_field :start_date, value: @start_date
           .col-sm-4
-            = f.date_select :end_date, value: @end_date
+            = f.date_field :end_date, value: @end_date
           .col-sm-4
             = f.select :selected_park,
                        @valid_parks,
-                       { selected: @selected_park],
+                       { selected: @selected_park,
                          label: "Park:",
                          wrapper: { class: 'has-warning' } },
                        { class: "selectpicker" }
