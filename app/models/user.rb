@@ -5,8 +5,4 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable, :confirmable
 
   validates :email, presence: true
-
-  acts_as_paranoid
-  validates_as_paranoid
-  validates_uniqueness_of_without_deleted :email
 end

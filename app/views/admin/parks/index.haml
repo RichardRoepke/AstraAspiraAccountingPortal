@@ -9,8 +9,10 @@
           %tr
             %th Name
             %th List Reports?
+            %th Deleted?
             %th.text-center Edit
             %th.text-center Info
+            %th.text-center Delete
         %tbody
           - @park_list.each do |park|
             %tr
@@ -19,5 +21,14 @@
                 %td True
               - else
                 %td False
+              - if park.deleted_at.present?
+                %td
+                  %i.fa.fa-check
+              - else
+                %td
+                  %i.fa.fa-times
               %td.text-center= link_to "edit", edit_admin_park_path(park)
               %td.text-center= link_to "info", admin_park_path(park)
+              %td.text-center
+                = bootstrap_form_tag url: admin_park_path(park), method: :delete do |f|
+                  = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'

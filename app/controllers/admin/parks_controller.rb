@@ -4,7 +4,7 @@ class Admin::ParksController < AdminController
   def index
     @content_header = 'All Parks'
     @sidebar = 'parks:index'
-    @park_list = Park.order(:name)
+    @park_list = Park.with_deleted.order(:name)
   end
 
   def show
