@@ -60,7 +60,7 @@ class Admin::ParksController < AdminController
     park_name = 'Park'
     park_name = @park.name if @park.present?
 
-    if @park.delete
+    if @park.destroy
       flash[:success] = park_name + ' was successfully deleted.'
     else
       flash[:warning] = park_name + ' could not be deleted.'
@@ -70,7 +70,7 @@ class Admin::ParksController < AdminController
   end
 
   def find_park
-    @park = Park.find(params[:id] || params[:park][:id])
+    @park = Park.with_deleted.find(params[:id] || params[:park][:id])
   end
 
   def park_params

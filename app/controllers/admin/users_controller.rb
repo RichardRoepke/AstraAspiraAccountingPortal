@@ -65,7 +65,7 @@ class Admin::UsersController < AdminController
     username = 'User'
     username = @user.email if @user.present?
 
-    if @user.delete
+    if @user.destroy
       flash[:success] = username + ' was successfully deleted.'
     else
       flash[:warning] = username + ' could not be deleted.'

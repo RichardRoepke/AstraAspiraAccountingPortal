@@ -10,6 +10,7 @@
             %th Name
             %th List Reports?
             %th Deleted?
+            %th Number of Reports
             %th.text-center Edit
             %th.text-center Info
             %th.text-center Delete
@@ -27,6 +28,7 @@
               - else
                 %td
                   %i.fa.fa-times
+              %td= park.reports.length
               %td.text-center= link_to "edit", edit_admin_park_path(park)
               %td.text-center= link_to "info", admin_park_path(park)
               %td.text-center
