@@ -25,11 +25,13 @@ toastr.options = {
 $(document).ajaxSuccess(function(event, xhr, settings) {
   var data = xhr.responseJSON;
 
-  if (data.status == 'success') {
-    toastr.success(data.message);
-  } else if (data.status == 'failure') {
-    toastr.error(data.message);
-  } else {
-    toastr.info(data.message);
+  if (data.message) {
+    if (data.status == 'success') {
+      toastr.success(data.message);
+    } else if (data.status == 'failure') {
+      toastr.error(data.message);
+    } else {
+      toastr.info(data.message);
+    }
   }
 });

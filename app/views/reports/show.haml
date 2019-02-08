@@ -1,8 +1,8 @@
 .container
   .box.box-default
     .box-body
-      = link_to 'Get File: ' + @report.file_name, @report.file_url, class: "btn btn-success btn-flat btn-sm"
-      = link_to 'Generate Excel File', root_path, class: "btn btn-info btn-flat btn-sm"
+      %a.btn.btn-success.btn-flat.btn-sm.file-transfer{ data: { url: @report.file_url } }
+        = 'Get File: ' + @report.file_name
   .box.box-primary
     .box-header.with-border
       %h4 Report Details

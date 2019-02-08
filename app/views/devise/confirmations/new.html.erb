@@ -1,6 +1,11 @@
 <h2>Resend confirmation instructions</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<%= simple_form_for(resource,
+                    as: resource_name,
+                    url: confirmation_path(resource_name),
+                    html: { method: :post },
+                    defaults: { input_html: { class: 'form-control' },
+                                wrapper_html: { class: 'form-group' } }) do |f| %>
   <%= f.error_notification %>
   <%= f.full_error :confirmation_token %>
 
@@ -8,7 +13,7 @@
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                value: resource.email,
                 input_html: { autocomplete: "email" } %>
   </div>
 
