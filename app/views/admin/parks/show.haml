@@ -1,10 +1,14 @@
 .container
   .box.box-default
     .box-body
-      = bootstrap_form_tag url: admin_park_path(@park), method: :delete do |f|
-        = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'
-      = bootstrap_form_tag url: admin_park_recover_path(park), method: :post do |f|
-        = f.submit 'RECOVER', class: 'btn btn-success btn-flat btn-sm'
+      .row
+        .col-sm-1
+          = bootstrap_form_tag url: admin_park_path(@park), method: :delete do |f|
+            = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'
+        - if @park.deleted_at.present?
+          .col-sm-1
+            = bootstrap_form_tag url: admin_park_recover_path(@park), method: :post do |f|
+              = f.submit 'RECOVER', class: 'btn btn-success btn-flat btn-sm'
   .box.box-warning
     .box-header.with-border
       %h4 Park Info
@@ -14,6 +18,12 @@
           %tr
             %th Name
             %td= @park.name
+          - if park.deleted_at.present?
+            %tr
+              %th Deleted
+              %td
+                %span.badge.badge-success
+                  Deleted
           %tr
             %th Username
             %td= @park.username
@@ -26,3 +36,6 @@
           %tr
             %th Email
             %td= @park.email
+          %tr
+            %th Number of Reports
+            %td= @park.reports.length

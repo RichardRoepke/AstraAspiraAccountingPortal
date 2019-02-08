@@ -1,5 +1,5 @@
 class Admin::ParksController < AdminController
-  before_action :find_park, only: [:show, :edit, :update, :destroy]
+  before_action :find_park, only: [:show, :edit, :update, :destroy, :recover]
 
   def index
     @content_header = 'All Parks'
@@ -83,7 +83,7 @@ class Admin::ParksController < AdminController
   end
 
   def find_park
-    @park = Park.with_deleted.find(params[:id] || params[:park][:id])
+    @park = Park.with_deleted.find(params[:id] || params[:park_id] || params[:park][:id])
   end
 
   def park_params
