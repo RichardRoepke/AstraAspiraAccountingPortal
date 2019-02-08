@@ -1,5 +1,5 @@
 class Admin::ParksController < AdminController
-  before_action :find_park, only: [:show, :edit, :update]
+  before_action :find_park, only: [:show, :edit, :update, :destroy]
 
   def index
     @content_header = 'All Parks'
@@ -54,6 +54,19 @@ class Admin::ParksController < AdminController
     end
 
     render json: result
+  end
+
+  def destroy
+    park_name = 'Park'
+    park_name = @park.name if @park.present?
+
+    if @park.delete
+      flash[:success] = park_name + ' was successfully deleted.'
+    else
+      flash[:warning] = park_name + ' could not be deleted.'
+    end
+
+    redirect_to admin_parks_path
   end
 
   def find_park
