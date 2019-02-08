@@ -69,6 +69,19 @@ class Admin::ParksController < AdminController
     redirect_to admin_parks_path
   end
 
+  def recover
+    park_name = 'Park'
+    park_name = @park.name if @park.present?
+
+    if @park.recover
+      flash[:success] = park_name + ' was successfully recovered.'
+    else
+      flash[:warning] = park_name + ' could not be recovered.'
+    end
+
+    redirect_to admin_parks_path
+  end
+
   def find_park
     @park = Park.with_deleted.find(params[:id] || params[:park][:id])
   end

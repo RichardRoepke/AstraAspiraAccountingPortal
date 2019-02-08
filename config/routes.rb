@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "users#index"
 
-    resources :parks
+    resources :parks do
+      post :recover
+    end
+
     resources :users
   end
 end
