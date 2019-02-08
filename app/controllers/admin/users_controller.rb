@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController
-  before_action :find_user, only: [:show, :edit, :update]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @sidebar = 'users:index'
@@ -10,6 +10,9 @@ class Admin::UsersController < AdminController
   def show
     @sidebar = 'users:info'
     @content_header = @user.email  + ' Information'
+  rescue
+    flash[:error] = 'Could not find user.'
+    redirect_to admin_users_path
   end
 
   def new
@@ -56,6 +59,19 @@ class Admin::UsersController < AdminController
     end
 
     render json: result
+  end
+
+  def destroy
+    username = 'User'
+    username = @user.email if @user.present?
+
+    if @user.delete
+      flash[:success] = username + ' was successfully deleted.'
+    else
+      flash[:warning] = username + ' could not be deleted.'
+    end
+
+    redirect_to admin_users_path
   end
 
   def find_user

@@ -13,6 +13,7 @@
             %th Last Login
             %th.text-center Edit
             %th.text-center Info
+            %th.text-center Delete
         %tbody
           - @user_list.each do |user|
             %tr
@@ -27,3 +28,6 @@
               %td= user.current_sign_in_at
               %td.text-center= link_to "edit", edit_admin_user_path(user)
               %td.text-center= link_to "info", admin_user_path(user)
+              %td.text-center
+                = bootstrap_form_tag url: admin_user_path(user), method: :delete do |f|
+                  = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'
