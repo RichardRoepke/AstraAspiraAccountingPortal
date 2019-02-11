@@ -18,17 +18,21 @@
           - @park_list.each do |park|
             %tr
               %td= park.name
-              - if park.report?
-                %td True
-              - else
-                %td False
-              - if park.deleted_at.present?
-                %td
+              %td
+                - if park.report?
+                 %i.fa.fa-check
+                - else
+                 %i.fa.fa-times
+              %td
+                - if park.deleted_at.present?
                   %i.fa.fa-check
-              - else
-                %td
+                - else
                   %i.fa.fa-times
-              %td= park.reports.length
+              %td
+                - if park.deleted_at.present?
+                  = parks.reports.with_deleted.length ' deleted'
+                - else
+                  = park.reports.length ' present'
               %td.text-center= link_to "edit", edit_admin_park_path(park)
               %td.text-center= link_to "info", admin_park_path(park)
               %td.text-center

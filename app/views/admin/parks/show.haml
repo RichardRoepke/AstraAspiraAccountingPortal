@@ -18,7 +18,7 @@
           %tr
             %th Name
             %td= @park.name
-          - if park.deleted_at.present?
+          - if @park.deleted_at.present?
             %tr
               %th Deleted
               %td

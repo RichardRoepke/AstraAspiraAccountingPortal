@@ -18,11 +18,10 @@
           - @user_list.each do |user|
             %tr
               %td= user.email
-              - if user.confirmed_at.present?
-                %td
+              %td
+                - if user.confirmed_at.present?
                   %i.fa.fa-check
-              - else
-                %td
+                - else
                   %i.fa.fa-times
               %td= user.sign_in_count
               %td= user.current_sign_in_at
