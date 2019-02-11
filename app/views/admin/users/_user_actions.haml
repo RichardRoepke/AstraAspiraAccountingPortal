@@ -9,6 +9,7 @@
         - unless @user.confirmed?
           .col-sm-2
             = f.submit 'Reconfirm', class: 'btn btn-info btn-flat btn-sm'
-      .col-sm-2
-        = bootstrap_form_tag url: admin_user_path(@user), method: :delete do |f|
-          = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'
+      - unless @user.id == current_user.id
+        .col-sm-2
+          = bootstrap_form_tag url: admin_user_path(@user), method: :delete do |f|
+            = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'

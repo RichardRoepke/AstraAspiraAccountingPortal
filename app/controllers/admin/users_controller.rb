@@ -65,10 +65,12 @@ class Admin::UsersController < AdminController
     username = 'User'
     username = @user.email if @user.present?
 
-    if @user.destroy
+    if @user.id != current_user.id && @user.destroy
       flash[:success] = username + ' was successfully deleted.'
+    elsif @user.id == current_user.id
+      flash[:warning] = 'Cannot delete own user account. Please contact another administrator if needed.'
     else
-      flash[:warning] = username + ' could not be deleted.'
+      flash[:error] = username + ' could not be deleted.'
     end
 
     redirect_to admin_users_path
