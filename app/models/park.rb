@@ -16,8 +16,15 @@ class Park < ActiveRecord::Base
     return address + ', ' + city + ', ' + state_name + ' (' + zipcode + ')'
   end
 
+  # Keeping State and state_id delinked just in case. Accidentially changing
+  # the Central Catalogue because of doing the wrong operation on the linked
+  # State could be disasterous.
   def state_name
-    # TODO: Linkup with Central Catalogue to decipher state_ids and return their names
-    return state_id.to_s
+    state = State.find(self.state_id)
+    if state.present?
+      return state.name
+    else
+      return self.state_id.to_s
+    end
   end
 end
