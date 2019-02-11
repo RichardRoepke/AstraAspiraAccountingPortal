@@ -20,9 +20,9 @@
               %td= park.name
               %td
                 - if park.report?
-                 %i.fa.fa-check
+                  %i.fa.fa-check
                 - else
-                 %i.fa.fa-times
+                  %i.fa.fa-times
               %td
                 - if park.deleted_at.present?
                   %i.fa.fa-check
@@ -30,9 +30,9 @@
                   %i.fa.fa-times
               %td
                 - if park.deleted_at.present?
-                  = parks.reports.with_deleted.length ' deleted'
+                  = park.reports.with_deleted.length.to_s + ' deleted'
                 - else
-                  = park.reports.length ' present'
+                  = park.reports.length.to_s + ' present'
               %td.text-center= link_to "edit", edit_admin_park_path(park)
               %td.text-center= link_to "info", admin_park_path(park)
               %td.text-center

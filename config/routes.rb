@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       post :recover
     end
 
-    resources :users
+    resources :users do
+      post :extra_actions
+    end
   end
 end

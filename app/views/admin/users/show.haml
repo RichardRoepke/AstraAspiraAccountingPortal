@@ -1,8 +1,15 @@
 .container
   .box.box-default
     .box-body
-      = bootstrap_form_tag url: admin_user_path(@user), method: :delete do |f|
-        = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'
+      .row
+        .col-sm-1
+          = bootstrap_form_tag url: admin_user_path(@user), method: :delete do |f|
+            = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'
+        = bootstrap_form_tag url: admin_user_extra_actions_path(@user), method: :post do |f|
+          - unless @user.confirmed?
+            .col-sm-1
+              = f.submit 'Reconfirm', class: 'btn btn-info btn-flat btn-sm'
+
   .box.box-info
     .box-header.with-border
       %h4 User Details

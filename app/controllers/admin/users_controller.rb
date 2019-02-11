@@ -1,5 +1,5 @@
 class Admin::UsersController < AdminController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update, :destroy, :extra_actions]
 
   def index
     @sidebar = 'users:index'
@@ -74,8 +74,30 @@ class Admin::UsersController < AdminController
     redirect_to admin_users_path
   end
 
+  def extra_actions
+    username = 'User'
+    username = @user.email if @user.present?
+
+    begin
+      if params[:commit].include?('Reconfirm')
+        @user.resend_confirmation_instructions
+      else
+        flash[:error] = 'No action found for ' + username + '.'
+      end
+    rescue => exception
+      if params[:commit].present?
+        flash[:error] = 'Could not complete ' + params[:commit] + ' for ' + username + '.'
+      else
+        flash[:error] = 'Not user action found.'
+      end
+    end
+
+    redirect_to admin_user_path(@user) and return if @user.present?
+    redirect_to admin_users_path
+  end
+
   def find_user
-    @user = User.find(params[:id] || params[:user][:id])
+    @user = User.find(params[:id] || params[:user_id] || params[:user][:id])
   end
 
   def user_params
