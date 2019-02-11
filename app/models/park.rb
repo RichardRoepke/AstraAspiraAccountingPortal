@@ -21,8 +21,19 @@ class Park < ActiveRecord::Base
   # State could be disasterous.
   def state_name
     state = State.find(self.state_id)
+
     if state.present?
       return state.name
+    else
+      return self.state_id.to_s
+    end
+  end
+
+  def state_abbrev
+    state = State.find(self.state_id)
+
+    if state.present?
+      return state.abbrev
     else
       return self.state_id.to_s
     end
