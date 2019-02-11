@@ -1,0 +1,12 @@
+.box.box-default
+  .box-body
+    .row
+      = bootstrap_form_tag url: admin_user_extra_actions_path(@user), method: :post do |f|
+        .col-sm-1
+          = f.submit 'Reset Password', class: 'btn btn-info btn-flat btn-sm'
+        - unless @user.confirmed?
+          .col-sm-1
+            = f.submit 'Reconfirm', class: 'btn btn-info btn-flat btn-sm'
+      .col-sm-1
+        = bootstrap_form_tag url: admin_user_path(@user), method: :delete do |f|
+          = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'

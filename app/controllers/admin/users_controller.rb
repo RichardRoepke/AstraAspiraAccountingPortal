@@ -81,6 +81,10 @@ class Admin::UsersController < AdminController
     begin
       if params[:commit].include?('Reconfirm')
         @user.resend_confirmation_instructions
+        flash[:success] = username + ' has been sent a new confirmation email.'
+      elsif params[:commit].include?('Reset Password')
+        @user.send_reset_password_instructions
+        flash[:success] = username + ' has been sent reset password instructions.'
       else
         flash[:error] = 'No action found for ' + username + '.'
       end
@@ -98,6 +102,9 @@ class Admin::UsersController < AdminController
 
   def find_user
     @user = User.find(params[:id] || params[:user_id] || params[:user][:id])
+  rescue
+    flash[:error] = "Couldn't find desired user."
+    redirect_to admin_users_path
   end
 
   def user_params
