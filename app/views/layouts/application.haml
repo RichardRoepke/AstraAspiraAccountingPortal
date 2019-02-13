@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+
+    %title AccountingPortal
+    %meta{ name:"viewport", content:"width=device-width, initial-scale=1, maximum-scale=1" }
+
+    = stylesheet_link_tag    :application, media: 'all'
+    = javascript_include_tag :application
+    - if current_user.try(:admin?)
+      = javascript_include_tag :admin
+    = javascript_include_tag "adminlte.min"
+    = csrf_meta_tags
+    = yield :head
+  %body{:class => "skin-yellow-light sidebar-mini fixed #{params[:controller].parameterize} #{action_name}"}
+    .wrapper
+      = render partial: 'layouts/header'
+      - if @sidebar.present?
+        = render partial: 'layouts/sidebar'
+      .content-wrapper
+        %section.content-header
+          %h1= @content_header
+        %section.content.overflow-hidden
+          = yield
+      .control-sidebar-bg{:style => "position: fixed; height: auto;"}
+    = yield :scripts
+
+- if flash.present?
+  :javascript
+    (function() {
+      var flashes = #{flash.to_json.html_safe};
+      flashes.forEach(function(flash) {
+        switch(flash[0]) {
+          case 'success':
+            toastr.success(flash[1]);
+            break;
+          case 'info':
+            toastr.info(flash[1]);
+            break;
+          case 'warning':
+            toastr.warning(flash[1]);
+            break;
+          case 'danger':
+          case 'error':
+            toastr.error(flash[1]);
+            break;
+          default:
+            toastr.info(flash[1]);
+            break;
+        }
+      });
+    })();

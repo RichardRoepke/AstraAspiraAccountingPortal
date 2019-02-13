@@ -1,0 +1,15 @@
+.box.box-default
+  .box-body
+    .row
+      = bootstrap_form_tag url: admin_user_extra_actions_path(@user), method: :post do |f|
+        /No need to reset password if user isn't confirmed yet.
+        - if @user.confirmed?
+          .col-sm-2
+            = f.submit 'Reset Password', class: 'btn btn-info btn-flat btn-sm'
+        - unless @user.confirmed?
+          .col-sm-2
+            = f.submit 'Reconfirm', class: 'btn btn-info btn-flat btn-sm'
+      - unless @user.id == current_user.id
+        .col-sm-2
+          = bootstrap_form_tag url: admin_user_path(@user), method: :delete do |f|
+            = f.submit 'DELETE', class: 'btn btn-danger btn-flat btn-sm'

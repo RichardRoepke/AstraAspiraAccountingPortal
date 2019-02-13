@@ -1,0 +1,8 @@
+////////////////////////////////
+// Admin Javascript Manifest //
+//////////////////////////////
+
+//= require jquery.slimscroll.min
+
+$(document).ready(function() {
+});

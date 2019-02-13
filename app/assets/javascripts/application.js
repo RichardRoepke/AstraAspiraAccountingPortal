@@ -12,5 +12,26 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery-ui
+//= require bootstrap-sprockets
+//= require toastr.min
+//= require sweetalert2.min
 //= require_tree .
+
+toastr.options = {
+  positionClass: 'toast-bottom-left'
+};
+
+$(document).ajaxSuccess(function(event, xhr, settings) {
+  var data = xhr.responseJSON;
+
+  if (data.message) {
+    if (data.status == 'success') {
+      toastr.success(data.message);
+    } else if (data.status == 'failure') {
+      toastr.error(data.message);
+    } else {
+      toastr.info(data.message);
+    }
+  }
+});

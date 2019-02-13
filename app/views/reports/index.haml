@@ -1,0 +1,37 @@
+.container
+  .box.box-default
+    .box-body
+      = bootstrap_form_tag url: '/reports', method: :get do |f|
+        .row
+          .col-sm-4
+            = f.date_field :start_date, value: @start_date
+          .col-sm-4
+            = f.date_field :end_date, value: @end_date
+          .col-sm-4
+            = f.select :selected_park,
+                       @valid_parks,
+                       { selected: @selected_park,
+                         label: "Park:",
+                         wrapper: { class: 'has-warning' } },
+                       { class: "selectpicker" }
+        .row
+          .col-sm-4
+            = f.submit "Search"
+  .box.box-primary
+    .box-body
+      %table#admin-table.searchable.table.table-bordered
+        %thead
+          %tr
+            %th Report
+            %th Accommodations
+            %th.text-center Info
+            %th.text-center Get File
+        %tbody
+          - @report_list.each do |report|
+            %tr
+              %td= report.full_name
+              %td= report.accommodations_new_cancelled
+              %td.text-center= link_to "info", report_path(report)
+              %td.text-center
+                %a.btn.btn-success.btn-flat.btn-sm.file-transfer{ data: { url: report.file_url } }
+                  = 'Get File: ' + report.file_name
