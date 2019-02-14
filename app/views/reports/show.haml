@@ -3,6 +3,7 @@
     .box-body
       %a.btn.btn-success.btn-flat.btn-sm.file-transfer{ data: { url: @report.file_url } }
         = 'Get File: ' + @report.file_name
+        %i.fa.fa-spinner.fa-spin.loading-spinner.hidden
   .box.box-primary
     .box-header.with-border
       %h4 Report Details
