@@ -14,28 +14,28 @@
             %td= @report.accommodations_new_cancelled
           %tr
             %th Total Revenue
-            %td= @report.total_rev
+            %td= '%.2f' % @report.total_rev
           %tr
             %th Total Cash
-            %td= @report.total_cash
+            %td= '%.2f' % @report.total_cash
           %tr
             %th Deposits
-            %td= @report.deposits
+            %td= '%.2f' % @report.deposits
           %tr
             %th Total Credit Card Payments
-            %td= @report.total_credit_card_payments
+            %td= '%.2f' % @report.total_credit_card_payments
           %tr
             %th Transaction Fees
-            %td= @report.transaction_fees
+            %td= '%.2f' % @report.transaction_fees
           %tr
             %th Credit Card Fees
-            %td= @report.credit_card_fees
+            %td= '%.2f' % @report.credit_card_fees
           %tr
             %th Total Fees
-            %td= @report.total_fees
+            %td= '%.2f' % @report.total_fees
           %tr
             %th Distribute Amount
-            %td= @report.distribute_amount
+            %td= '%.2f' % @report.distribute_amount
 
   .box.box-warning
     .box-header.with-border
